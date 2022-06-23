@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <!-- App title -->
+        <title>KoProll - Dashboard</title>
+
+        <!-- date range picker -->
+      
+
+    </head>
+
+
+    <body class="fixed-left">
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Top Bar Start -->
+            <div class="topbar">
+
+                <!-- LOGO -->
+                <div class="topbar-left">
+                    <!-- <a href="index.html" class="logo"><span>Ko<span>Proll</span></span><i class="mdi mdi-layers"></i></a> -->
+                    <!-- Image logo -->
+                    <a href="index.html" class="logo">
+                        <span>
+                            <img src="assets/images/KoProll-logo-inv.png" alt="" height="50">
+                        </span>
+                        <i>
+                            <img src="assets/images/KoProll.png" alt="" height="40">
+                        </i>
+                    </a>
+                </div>
+
+                <!-- Button mobile view to collapse sidebar menu -->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container">
+
+                        <!-- Navbar-left -->
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <button class="button-menu-mobile open-left waves-effect">
+                                    <i class="mdi mdi-menu"></i>
+                                </button>
+                            </li>
+                        </ul>
+
+                        <!-- Right(Notification) -->
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown user-box">
+                                <a href="" class="dropdown-toggle waves-effect user-link" data-toggle="dropdown" aria-expanded="true">
+                                    <img src="assets/images/users/avatar-11.png" alt="user-img" class="img-circle user-img">
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
+                                    <li>
+                                        <h5>Hi, Mellyza</h5>
+                                    </li>
+                                    <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile</a></li>
+                                    <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>
+                                </ul>
+                            </li>
+
+                        </ul> <!-- end navbar-right -->
+
+                    </div><!-- end container -->
+                </div><!-- end navbar -->
+            </div>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left side-menu">
+                <div class="sidebar-inner slimscrollleft">
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <ul>
+                        	<li class="menu-title">Navigation</li>
+
+                            <li class="has_sub">
+                                <a href="KoProll-Dashboard.html" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span> Dashboard </span> </a>
+                            </li>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-clipboard-text"></i> <span> Input Data </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="KoProll-User.html">Data Pengguna</a></li>
+                                    <li><a href="KoProll-TableKaryawan.html">Karyawan</a></li>
+                                    <li><a href="KoProll-PotonganTambahan.html">Potongan/Tambahan</a></li>
+                                    <li><a href="KoProll-Transaksi.html">Transaksi</a></li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="mdi mdi-power"></i><span> Logout </span> </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Sidebar -->
+                    <div class="clearfix"></div>
+                </div>
+                <!-- Sidebar -left -->
+
+            </div>
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container">
+
+
+                        <div class="row animated fadeIn">
+							<div class="col-xs-12">
+								<div class="page-title-box">
+                                    <h4 class="page-title">Selamat datang, Mellyza</h4>
+                                    <ol class="breadcrumb p-0 m-0">
+                                        <li>
+                                            <a href="#">Dashboard </a>
+                                        </li>
+                                    </ol>
+                                    <div class="clearfix"></div>
+                                </div>
+							</div>
+						</div>
+                        <!-- end row -->
+
+
+
+                        <div class="row animated fadeInUp">
+                            <div class="col-md-12">
+                                <div class="card-box">
+                                    <h4 class="header-title m-t-0 m-b-30">Transaksi Terakhir</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table table-hover m-0">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Nama Karyawan</th>
+                                                    <th>Gaji Kotor</th>
+                                                    <th>Total Potongan</th>
+                                                    <th>Total Tambahan</th>
+                                                    <th>Gaji Bersih</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th>
+                                                        <span class="avatar-sm-box bg-primary">S</span>
+                                                    </th>
+                                                    <td>
+                                                        <h5 class="m-0">Sudrajat</h5>
+                                                        <p class="m-0 text-muted font-13"><small>Tukang Internet</small></p>
+                                                    </td>
+                                                    <td>Rp. 3.500.000,-</td>
+                                                    <td>Rp. 54.000.000,-</td>
+                                                    <td>Rp. 500.000,-</td>
+                                                    <td>Rp. 0,-</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <span class="avatar-sm-box bg-danger">D</span>
+                                                    </th>
+                                                    <td>
+                                                        <h5 class="m-0">Dudi</h5>
+                                                        <p class="m-0 text-muted font-13"><small>Kepala Gudang</small></p>
+                                                    </td>
+                                                    <td>Rp. 4.500.000,-</td>
+                                                    <td>Rp. 1.000.000,-</td>
+                                                    <td>Rp. 500.000,-</td>
+                                                    <td>Rp. 4.000.000,-</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>
+                                                        <span class="avatar-sm-box bg-warning">M</span>
+                                                    </th>
+                                                    <td>
+                                                        <h5 class="m-0">Mellyza</h5>
+                                                        <p class="m-0 text-muted font-13"><small>Programmer</small></p>
+                                                    </td>
+                                                    <td>Rp. 25.000.000,-</td>
+                                                    <td>Rp. 1.000.000,-</td>
+                                                    <td>Rp. 0,-</td>
+                                                    <td>Rp. 24.000.000,-</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div> <!-- table-responsive -->
+                                </div> <!-- end card -->
+                            </div>
+                            <!-- end col -->
+
+                        </div>
+                        <!-- end row -->
+
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <footer class="footer text-right">
+                </footer>
+
+            </div>
+
+
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+
+
+            <!-- Right Sidebar -->
+            <!-- /Right-bar -->
+
+        </div>
+        <!-- END wrapper -->
+
+
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+        <!-- jQuery  -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/detect.js"></script>
+        <script src="assets/js/fastclick.js"></script>
+        <script src="assets/js/jquery.blockUI.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
+        <script src="assets/js/jquery.scrollTo.min.js"></script>
+        <script src="../plugins/switchery/switchery.min.js"></script>
+
+        <!-- Counter js  -->
+        <script src="../plugins/waypoints/jquery.waypoints.min.js"></script>
+        <script src="../plugins/counterup/jquery.counterup.min.js"></script>
+
+        <!-- Flot chart js -->
+        <script src="../plugins/flot-chart/jquery.flot.min.js"></script>
+        <script src="../plugins/flot-chart/jquery.flot.time.js"></script>
+        <script src="../plugins/flot-chart/jquery.flot.tooltip.min.js"></script>
+        <script src="../plugins/flot-chart/jquery.flot.resize.js"></script>
+        <script src="../plugins/flot-chart/jquery.flot.pie.js"></script>
+        <script src="../plugins/flot-chart/jquery.flot.selection.js"></script>
+        <script src="../plugins/flot-chart/jquery.flot.crosshair.js"></script>
+
+        <script src="../plugins/moment/moment.js"></script>
+        <script src="../plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+
+        <!-- Dashboard init -->
+        <script src="assets/pages/jquery.dashboard_2.js"></script>
+
+        <!-- App js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+
+        <script>
+            $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+            $('#reportrange').daterangepicker({
+                format: 'MM/DD/YYYY',
+                startDate: moment().subtract(29, 'days'),
+                endDate: moment(),
+                minDate: '01/01/2012',
+                maxDate: '12/31/2016',
+                dateLimit: {
+                    days: 60
+                },
+                showDropdowns: true,
+                showWeekNumbers: true,
+                timePicker: false,
+                timePickerIncrement: 1,
+                timePicker12Hour: true,
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                opens: 'left',
+                drops: 'down',
+                buttonClasses: ['btn', 'btn-sm'],
+                applyClass: 'btn-success',
+                cancelClass: 'btn-default',
+                separator: ' to ',
+                locale: {
+                    applyLabel: 'Submit',
+                    cancelLabel: 'Cancel',
+                    fromLabel: 'From',
+                    toLabel: 'To',
+                    customRangeLabel: 'Custom',
+                    daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                    monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                    firstDay: 1
+                }
+            }, function (start, end, label) {
+                console.log(start.toISOString(), end.toISOString(), label);
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            });
+        </script>
+
+    </body>
+</html>
