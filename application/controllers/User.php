@@ -34,7 +34,6 @@ class User extends CI_Controller
 	{
 		$data['user_name'] = $this->session->userdata("name");
 		$data['content'] = $this->load->view($content, $data, true);
-		$data['access'] = $this->session->userdata("access");
 
 		$this->load->view('template', $data);
 	}
@@ -55,13 +54,10 @@ class User extends CI_Controller
 			$post_data = array(
 				'name' => $this->input->post('name'),
 				'email' => $this->input->post('email'),
-				'status' => $this->input->post('status'),
-				'access' => $this->input->post('access'),
 			);
 
 			$this->form_validation->set_rules('name', 'Name', 'required');
 			$this->form_validation->set_rules('email', 'Email', 'required');
-			$this->form_validation->set_rules('access', 'Access', 'required');
 
 			if ($this->input->post('id') == '') {
 				$this->form_validation->set_rules('password', 'Password', 'required');
@@ -116,22 +112,9 @@ class User extends CI_Controller
 
 		}
 
-		$user_access = array(
-			'1' => 'Ketua',
-			'3' => 'Bendahara',
-			'4' => 'Admin'
-		);
-
-		$status = array(
-			'1' => 'Active',
-			'2' => 'Nonactive',
-		);
-
 		$data = array(
 			'data' => $this->UserModel->getWhere(array('id' => $this->uri->segment(3)))->row_array(),
 			'alert' => $this->alert,
-			'access' => $user_access,
-			'status' => $status
 		);
 
 		$this->template('user/form', $data);

@@ -83,22 +83,6 @@
 										<?php echo form_error('email', '<div class="error">', '</div>'); ?>
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="control-label col-md-2">Akses <span
-												class="text-danger">*</span></label>
-									<div class="col-md-10">
-										<?php echo form_dropdown('access', $access, empty($data['access']) ? "" : $data['access'], 'class="form-control"'); ?>
-										<?php echo form_error('access', '<div class="error">', '</div>'); ?>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-md-2">Status <span
-												class="text-danger">*</span></label>
-									<div class="col-md-10">
-										<?php echo form_dropdown('status', $status, empty($data['status']) ? "" : $data['status'], 'class="form-control"'); ?>
-										<?php echo form_error('status', '<div class="error">', '</div>'); ?>
-									</div>
-								</div>
 								<div class="form-group text-right m-b-0">
 									<div class="col-md-2">
 										<input type="hidden" name="id"

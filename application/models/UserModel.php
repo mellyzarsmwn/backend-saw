@@ -4,14 +4,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class UserModel extends CI_Model
 {
 
-	const ACCESS_KETUA = 1;
-	const ACCESS_WAKIL_KETUA = 2;
-	const ACCESS_BENDAHARA = 3;
-	const ACCESS_ADMIN = 4;
-
-	const STATUS_ACTIVE = 1;
-	const STATUS_INACTIVE = 2;
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -83,7 +75,7 @@ class UserModel extends CI_Model
 		//menghapus data pada tabel users sesuai kriteria
 		$data = array(
 			'deleted_at' => date('Y-m-d H:i:s'),
-			'status' => self::STATUS_INACTIVE,
+			'updated_at' => date('Y-m-d H:i:s'),
 		);
 
 		$this->db->where($where);
