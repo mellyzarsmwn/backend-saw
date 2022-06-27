@@ -22,12 +22,8 @@ class Defaults extends CI_Controller
 
 	public function index()
 	{
-		$report_last_month = $this->SalaryReportModel->getReportByLastMonth();
-
 		//load method template
-		$data['report_last_month'] = $report_last_month;
 		$data['user_name'] = $this->session->userdata("name");
-		$data['access'] = $this->session->userdata("access");
 		$this->template('defaults/index', $data);
 	}
 

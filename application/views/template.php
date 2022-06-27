@@ -10,7 +10,7 @@
 	<!-- App favicon -->
 	<link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/favicon.ico">
 	<!-- App title -->
-	<title>KoProll</title>
+	<title>Backend SAW</title>
 
 	<?php $this->load->view('default_css/' . $this->css_default) ?>
 </head>
@@ -67,38 +67,27 @@
 			<div id="sidebar-menu">
 				<ul>
 					<li class="menu-title">Menu</li>
-
 					<li class="has_sub">
 						<a href="<?php echo site_url('defaults') ?>" class="waves-effect"><i
 									class="mdi mdi-view-dashboard"></i><span> Dashboard </span> </a>
 					</li>
-					<?php
-					// 4: akses admin, 3: akses bendahara
-					if ($access == 4 || $access == 3) { ?>
-						<li class="has_sub">
-							<a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-clipboard-text"></i>
-								<span> Master Data </span>
-								<span class="menu-arrow"></span></a>
-							<ul class="list-unstyled">
-								<?php
-								// 4: akses admin
-								if ($access == 4) { ?>
-									<li><a href="<?php echo site_url('user') ?>">Pengguna</a></li>
-									<li><a href="<?php echo site_url('employee') ?>">Karyawan</a></li>
-								<?php } elseif ($access == 3) { ?> <!-- 3: akses bendahara -->
-									<li><a href="<?php echo site_url('salarytype') ?>">Potongan/Tambahan</a></li>
-								<?php } ?>
-							</ul>
-						</li>
-					<?php } ?>
-					<?php
-					// 1: akses ketua, 2: akses wakil ketua, 3: akses bendahara
-					if ($access == 1 || $access == 2 || $access == 3) { ?>
-						<li class="has_sub">
-							<a href="<?php echo site_url('salaryreport') ?>" class="waves-effect"><i
-										class="mdi mdi-cash-multiple"></i><span> Laporan Gaji </span> </a>
-						</li>
-					<?php } ?>
+					<li class="has_sub">
+						<a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-clipboard-text"></i>
+							<span> Master Data </span>
+							<span class="menu-arrow"></span></a>
+						<ul class="list-unstyled">
+							<li><a href="<?php echo site_url('user') ?>">Pengguna</a></li>
+							<li><a href="<?php echo site_url('salarytype') ?>">Kriteria</a></li>
+							<li><a href="<?php echo site_url('salarytype') ?>">Sub Kriteria</a></li>
+							<li><a href="<?php echo site_url('employee') ?>">Alternatif</a></li>
+						</ul>
+					</li>
+					<li class="has_sub">
+						<a href="<?php echo site_url('salaryreport') ?>" class="waves-effect"><i
+									class="mdi mdi-counter"></i><span>Nilai Alternatif</span> </a>
+						<a href="<?php echo site_url('salaryreport') ?>" class="waves-effect"><i
+									class="mdi mdi-cash-multiple"></i><span>Perhitungan</span> </a>
+					</li>
 					<li class="has_sub">
 						<a href="<?php echo site_url('login/out') ?>" class="waves-effect"><i class="mdi mdi-power"></i><span> Logout </span>
 						</a>
@@ -118,7 +107,6 @@
 	<div class="content-page">
 		<!-- Start content -->
 		<?= $content ?>
-
 		<footer class="footer text-right">
 		</footer>
 	</div>

@@ -36,8 +36,6 @@
 							<th width="3%">No</th>
 							<th>Nama</th>
 							<th>Email</th>
-							<th>Akses</th>
-							<th>Status</th>
 							<th>Tanggal Dibuat</th>
 							<th>Tanggal Diupdate</th>
 							<th>Aksi</th>
@@ -52,25 +50,6 @@
 								<td><?php echo $n; ?></td>
 								<td><?php echo $user['name']; ?></td>
 								<td><?php echo $user['email']; ?></td>
-								<?php
-								if ($user['access'] == 1) {
-									$access = 'Ketua';
-								} elseif ($user['access'] == 2) {
-									$access = 'Wakil Ketua';
-								} elseif ($user['access'] == 3) {
-									$access = 'Bendahara';
-								} else {
-									$access = 'Admin';
-								}
-								?>
-								<td><?php echo $access; ?></td>
-								<?php if ($user['status'] == 1) {
-									$status = 'Aktif';
-								} else {
-									$status = 'Tidak Aktif';
-								}
-								?>
-								<td><?php echo $status; ?></td>
 								<td><?php echo $user['created_at']; ?></td>
 								<td><?php echo $user['updated_at']; ?></td>
 								<td>

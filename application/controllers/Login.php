@@ -26,7 +26,7 @@ class Login extends CI_Controller
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 
-		$query = $this->db->get("users WHERE email = '$email' AND deleted_at is null AND status = 1");
+		$query = $this->db->get("users WHERE email = '$email' AND deleted_at is null");
 		$result = $query->row();
 
 		if (empty($result)) {
@@ -42,7 +42,6 @@ class Login extends CI_Controller
 		$this->session->set_userdata("id", $result->id);
 		$this->session->set_userdata("name", $result->name);
 		$this->session->set_userdata("email", $result->email);
-		$this->session->set_userdata("access", $result->access);
 		redirect('defaults/index');
 	}
 
