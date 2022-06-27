@@ -77,7 +77,7 @@
 							<span class="menu-arrow"></span></a>
 						<ul class="list-unstyled">
 							<li><a href="<?php echo site_url('user') ?>">Pengguna</a></li>
-							<li><a href="<?php echo site_url('salarytype') ?>">Kriteria</a></li>
+							<li><a href="<?php echo site_url('criteria') ?>">Kriteria</a></li>
 							<li><a href="<?php echo site_url('salarytype') ?>">Sub Kriteria</a></li>
 							<li><a href="<?php echo site_url('employee') ?>">Alternatif</a></li>
 						</ul>
