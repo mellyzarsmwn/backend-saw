@@ -24,48 +24,56 @@
 			</div>
 		</div>
 		<!-- end row -->
-		<div class="row animated fadeInUp">
-			<div class="col-sm-12">
-				<div class="card-box table-responsive">
-					<table id="datatable" class="table table-striped table-bordered table-responsive">
-						<thead>
-						<tr>
-							<th width="3%">No</th>
-							<th>Nama</th>
-							<th>Perusahaan Sebelumnya</th>
-							<th>Jabatan Terakhir</th>
-							<th>No HP</th>
-							<th>Email</th>
-							<th>Action</th>
-						</tr>
-						</thead>
-						<tbody>
-						<?php $n = 0;
-						foreach ($alternatives->result_array() as $alternative) {
-							$n++; ?>
+		<?php
+		if ($alternatives->num_rows() > 0) {
+			?>
+			<div class="row animated fadeInUp">
+				<div class="col-sm-12">
+					<div class="card-box table-responsive">
+						<table id="datatable" class="table table-striped table-bordered table-responsive">
+							<thead>
 							<tr>
-								<td><?php echo $n; ?></td>
-								<td><?php echo $alternative['name']; ?></td>
-								<td><?php echo $alternative['previous_company']; ?></td>
-								<td><?php echo $alternative['current_job_position']; ?></td>
-								<td><?php echo $alternative['phone_number']; ?></td>
-								<td><?php echo $alternative['email']; ?></td>
-								<td>
-									<a href="<?php echo site_url('alternative/form/' . $alternative['id']); ?>"
-									   class="btn btn-icon btn-xs waves-effect waves-light btn-success m-b-5"><i
-												class="mdi mdi-pencil"></i></a>
-									<a onclick="return confirm('Are you sure?')"
-									   href="<?php echo site_url('alternative/delete/' . $alternative['id']); ?>"
-									   class="btn btn-icon btn-xs waves-effect waves-light btn-danger m-b-5"><i
-												class="mdi mdi-delete"></i></a>
-								</td>
+								<th width="3%">No</th>
+								<th>Nama</th>
+								<th>Perusahaan Sebelumnya</th>
+								<th>Jabatan Terakhir</th>
+								<th>No HP</th>
+								<th>Email</th>
+								<th>Action</th>
 							</tr>
-						<?php } ?>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+							<?php $n = 0;
+							foreach ($alternatives->result_array() as $alternative) {
+								$n++; ?>
+								<tr>
+									<td><?php echo $n; ?></td>
+									<td><?php echo $alternative['name']; ?></td>
+									<td><?php echo $alternative['previous_company']; ?></td>
+									<td><?php echo $alternative['current_job_position']; ?></td>
+									<td><?php echo $alternative['phone_number']; ?></td>
+									<td><?php echo $alternative['email']; ?></td>
+									<td>
+										<a href="<?php echo site_url('alternative/form/' . $alternative['id']); ?>"
+										   class="btn btn-icon btn-xs waves-effect waves-light btn-success m-b-5"><i
+													class="mdi mdi-pencil"></i></a>
+										<a onclick="return confirm('Are you sure?')"
+										   href="<?php echo site_url('alternative/delete/' . $alternative['id']); ?>"
+										   class="btn btn-icon btn-xs waves-effect waves-light btn-danger m-b-5"><i
+													class="mdi mdi-delete"></i></a>
+									</td>
+								</tr>
+							<?php } ?>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
-		</div>
+			<?php
+		} else {
+			$this->load->view("no_data.php");
+		}
+		?>
 		<!-- end row -->
 	</div> <!-- container -->
 </div>

@@ -15,7 +15,7 @@ class CriteriaModel extends CI_Model
 	{
 		return $this->db->select('c.*')
 			->where('deleted_at is null')
-			->order_by('name asc')
+			->order_by('id desc')
 			->get('criteria c');
 	}
 
