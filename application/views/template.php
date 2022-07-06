@@ -78,7 +78,7 @@
 						<ul class="list-unstyled">
 							<li><a href="<?php echo site_url('user') ?>">Pengguna</a></li>
 							<li><a href="<?php echo site_url('criteria') ?>">Kriteria</a></li>
-							<li><a href="<?php echo site_url('subcriteria') ?>">Sub Kriteria</a></li>
+							<li><a href="<?php echo site_url('subcriteria') ?>">Nilai Crips</a></li>
 							<li><a href="<?php echo site_url('period') ?>">Periode</a></li>
 							<li><a href="<?php echo site_url('alternative') ?>">Alternatif</a></li>
 						</ul>

@@ -56,7 +56,7 @@ class User extends CI_Controller
 				'email' => $this->input->post('email'),
 			);
 
-			$this->form_validation->set_rules('name', 'Name', 'required');
+			$this->form_validation->set_rules('name', 'Nama', 'required');
 			$this->form_validation->set_rules('email', 'Email', 'required');
 
 			if ($this->input->post('id') == '') {

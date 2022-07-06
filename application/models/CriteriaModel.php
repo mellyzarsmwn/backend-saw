@@ -11,6 +11,22 @@ class CriteriaModel extends CI_Model
 		$this->load->database();
 	}
 
+	public function getActiveCriteria()
+	{
+		$data = array();
+
+		$criterias = $this->db
+			->where('deleted_at is null')
+			->get('criteria')
+			->result();
+
+		foreach ($criterias as $value) {
+			$data[$value->id] = $value->name;
+		}
+
+		return $data;
+	}
+
 	public function all()
 	{
 		return $this->db->select('c.*')

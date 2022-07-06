@@ -10,19 +10,19 @@
 					}
 					if ($id == "") {
 						?>
-						<h4 class="page-title">Tambah Data Sub Kriteria</h4>
+						<h4 class="page-title">Tambah Nilai Crips</h4>
 					<?php } else { ?>
-						<h4 class="page-title">Ubah Data Sub Kriteria</h4>
+						<h4 class="page-title">Ubah Nilai Crips</h4>
 					<?php } ?>
 					<ol class="breadcrumb p-0 m-0">
 						<li>
 							<a href="#">Master Data</a>
 						</li>
 						<li>
-							<a href="<?php echo site_url('/subcriteria'); ?>">Sub Kriteria </a>
+							<a href="<?php echo site_url('/subcriteria'); ?>">Data Nilai Crips</a>
 						</li>
 						<li class="active">
-							Tambah Data Sub Kriteria
+							Tambah Nilai Crips
 						</li>
 					</ol>
 					<div class="clearfix"></div>
@@ -37,8 +37,16 @@
 						<div class="col-md-12">
 							<?php echo $alert; ?>
 							<form method="post" class="form-horizontal">
+								<div class="form-group row">
+									<label class="control-label col-md-2">Nama Kriteria
+										<span class="text-danger">*</span></label>
+									<div class="col-md-10">
+										<?php echo form_dropdown('criteria_id', $criterias, empty($data['criteria_id']) ? "" : $data['criteria_id'], 'class="form-control" id="criteria"'); ?>
+										<?php echo form_error('criteria_id', '<div class="error">', '</div>'); ?>
+									</div>
+								</div>
 								<div class="form-group">
-									<label class="control-label col-md-2">Nama <span
+									<label class="control-label col-md-2">Keterangan<span
 												class="text-danger">*</span></label>
 									<div class="col-md-10">
 										<input type="text" name="name" class="form-control"
@@ -47,28 +55,12 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="control-label col-md-2">Bobot <span
+									<label class="control-label col-md-2">Nilai <span
 												class="text-danger">*</span></label>
 									<div class="col-md-10">
-										<input type="text" name="weight" class="form-control"
-											   value="<?php echo empty($data['weight']) ? "" : $data['weight']; ?>">
-										<?php echo form_error('weight', '<div class="error">', '</div>'); ?>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-md-2">Tipe <span
-												class="text-danger">*</span></label>
-									<div class="col-md-10">
-										<?php echo form_dropdown('type', $type, empty($data['type']) ? "" : $data['type'], 'class="form-control"'); ?>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-md-2">Keterangan <span
-												class="text-danger">*</span></label>
-									<div class="col-md-10">
-										<input type="text" name="description" class="form-control"
-											   value="<?php echo empty($data['description']) ? "" : $data['description']; ?>">
-										<?php echo form_error('description', '<div class="error">', '</div>'); ?>
+										<input type="text" name="point" class="form-control"
+											   value="<?php echo empty($data['point']) ? "" : $data['point']; ?>">
+										<?php echo form_error('point', '<div class="error">', '</div>'); ?>
 									</div>
 								</div>
 								<div class="form-group text-right m-b-0">
@@ -77,7 +69,7 @@
 											   value="<?php echo empty($data['id']) ? '' : $data['id']; ?>">
 									</div>
 									<div class="col-md-10">
-										<a href="<?php echo site_url('/criteria'); ?>" class="btn btn-danger">Back</a>
+										<a href="<?php echo site_url('/subcriteria'); ?>" class="btn btn-danger">Back</a>
 										<input type="submit" name="save" class="btn btn-success" value="Simpan">
 									</div>
 								</div>

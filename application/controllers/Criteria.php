@@ -58,7 +58,7 @@ class Criteria extends CI_Controller
 				'description' => $this->input->post('description'),
 			);
 
-			$this->form_validation->set_rules('name', 'Name', 'required');
+			$this->form_validation->set_rules('name', 'Nama Kriteria', 'required');
 			$this->form_validation->set_rules('weight', 'Bobot', 'required');
 
 			if ($this->form_validation->run()) {
@@ -83,9 +83,6 @@ class Criteria extends CI_Controller
 				} else {
 					// Kalau ada id update data
 					$post_data['updated_at'] = date('Y-m-d H:i:s');
-					if (!empty($this->input->post('password'))) {
-						$post_data['password'] = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
-					}
 
 					if ($this->CriteriaModel->update($post_data, array('id' => $this->input->post('id')))) {
 						// Kalau sukses

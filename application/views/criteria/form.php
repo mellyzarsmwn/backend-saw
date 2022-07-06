@@ -63,8 +63,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="control-label col-md-2">Keterangan <span
-												class="text-danger">*</span></label>
+									<label class="control-label col-md-2">Keterangan</label>
 									<div class="col-md-10">
 										<input type="text" name="description" class="form-control"
 											   value="<?php echo empty($data['description']) ? "" : $data['description']; ?>">
