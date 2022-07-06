@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Criteria extends CI_Controller
+class SubCriteria extends CI_Controller
 {
 	//membuat atribut alert 
 	private $alert = '';
@@ -15,6 +15,7 @@ class Criteria extends CI_Controller
 
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
+		$this->load->model('SubCriteriaModel');
 		$this->load->model('CriteriaModel');
 		if (empty($this->session->userdata("id"))) {
 			redirect('login/index');
@@ -40,26 +41,29 @@ class Criteria extends CI_Controller
 
 	public function index()
 	{
+		$criteria_id = isset($_REQUEST["criteria_id"]) ? $_REQUEST["criteria_id"] : "";
+
 		$data_save = $this->session->flashdata('data');
 		if (!empty($data_save)) {
-			$data['criteria_save'] = $data_save;
+			$data['sub_criteria_save'] = $data_save;
 		}
-		$data['criterias'] = $this->CriteriaModel->all();
-		$this->template('criteria/list', $data);
+		$data['criterias'] = $this->CriteriaModel->getActiveCriteria();
+		$data['sub_criterias'] = $this->SubCriteriaModel->all($criteria_id);
+		$this->template('sub-criteria/list', $data);
 	}
 
 	public function form()
 	{
 		if ($this->input->post('save')) {
 			$post_data = array(
+				'criteria_id' => $this->input->post('criteria_id'),
 				'name' => $this->input->post('name'),
-				'weight' => $this->input->post('weight'),
-				'type' => $this->input->post('type'),
-				'description' => $this->input->post('description'),
+				'point' => $this->input->post('point'),
 			);
 
-			$this->form_validation->set_rules('name', 'Nama Kriteria', 'required');
-			$this->form_validation->set_rules('weight', 'Bobot', 'required');
+			$this->form_validation->set_rules('criteria_id', 'Kriteria', 'required');
+			$this->form_validation->set_rules('name', 'Keterangan', 'required');
+			$this->form_validation->set_rules('point', 'Nilai', 'required');
 
 			if ($this->form_validation->run()) {
 				if ($this->input->post('id') == '') {
@@ -67,35 +71,35 @@ class Criteria extends CI_Controller
 					$post_data['created_at'] = date('Y-m-d H:i:s');
 					$post_data['updated_at'] = date('Y-m-d H:i:s');
 
-					if ($this->CriteriaModel->insert($post_data)) {
+					if ($this->SubCriteriaModel->insert($post_data)) {
 						// Kalau sukses
-						$this->alert = $this->alert("<p class='alert alert-success'>", "</p>", "Data kriteria berhasil disimpan..");
+						$this->alert = $this->alert("<p class='alert alert-success'>", "</p>", "Nilai crips berhasil disimpan..");
 
 						$data = array(
 							'alert' => $this->alert,
 						);
 						$this->session->set_flashdata('data', $data);
-						redirect('criteria');
+						redirect('subcriteria');
 					} else {
 						// Kalau gagal
-						$this->alert = $this->alert("<p class='alert alert-danger'>", "</p>", "Gagal menyimpan data kriteria..");
+						$this->alert = $this->alert("<p class='alert alert-danger'>", "</p>", "Gagal menyimpan nilai crips..");
 					}
 				} else {
 					// Kalau ada id update data
 					$post_data['updated_at'] = date('Y-m-d H:i:s');
 
-					if ($this->CriteriaModel->update($post_data, array('id' => $this->input->post('id')))) {
+					if ($this->SubCriteriaModel->update($post_data, array('id' => $this->input->post('id')))) {
 						// Kalau sukses
-						$this->alert = $this->alert("<p class='alert alert-success'>", "</p>", "Data kriteria berhasil diupdate..");
+						$this->alert = $this->alert("<p class='alert alert-success'>", "</p>", "Nilai crips berhasil diupdate..");
 
 						$data = array(
 							'alert' => $this->alert,
 						);
 						$this->session->set_flashdata('data', $data);
-						redirect('criteria');
+						redirect('subcriteria');
 					} else {
 						// Kalau gagal
-						$this->alert = $this->alert("<p class='alert alert-danger'>", "</p>", "Gagal mengupdate data kriteria..");
+						$this->alert = $this->alert("<p class='alert alert-danger'>", "</p>", "Gagal mengupdate nilai crips..");
 					}
 				}
 			} else {
@@ -104,24 +108,21 @@ class Criteria extends CI_Controller
 
 		}
 
-		$type = array(
-			'1' => 'Benefit',
-			'2' => 'Cost',
-		);
+		$criterias = $this->CriteriaModel->getActiveCriteria();
 
 		$data = array(
-			'data' => $this->CriteriaModel->getWhere(array('id' => $this->uri->segment(3)))->row_array(),
+			'data' => $this->SubCriteriaModel->getWhere(array('id' => $this->uri->segment(3)))->row_array(),
 			'alert' => $this->alert,
-			'type' => $type
+			'criterias' => $criterias
 		);
 
-		$this->template('criteria/form', $data);
+		$this->template('sub-criteria/form', $data);
 	}
 
 	public function delete()
 	{
 		if ($this->uri->segment(3)) {
-			if ($this->CriteriaModel->delete(array('id' => $this->uri->segment(3)))) {
+			if ($this->SubCriteriaModel->delete(array('id' => $this->uri->segment(3)))) {
 				$this->alert = $this->alert("<p class='alert alert-success'>", "</p>", "Data kriteria berhasil dihapus..");
 
 				$data = array(

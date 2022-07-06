@@ -40,6 +40,7 @@ class AlternativeModel extends CI_Model
 	{
 		$data = array(
 			'deleted_at' => date('Y-m-d H:i:s'),
+			'updated_at' => date('Y-m-d H:i:s'),
 		);
 
 		$this->db->where($where);

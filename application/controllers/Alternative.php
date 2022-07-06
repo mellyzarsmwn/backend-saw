@@ -29,21 +29,6 @@ class Alternative extends CI_Controller
 		return $data;
 	}
 
-	public function get_by_id()
-	{
-		header('Content-Type: application/json');
-
-		$id = $this->input->get('id');
-		$employee = $this->EmployeeModel->getWhere(array('id' => $id))->row();
-		$employee->salary = (float)$employee->salary;
-
-		$data_array = array(
-			'employee' => $employee,
-		);
-
-		$data_json = json_encode($data_array);
-		echo $data_json;
-	}
 
 	private function template($content, $data = null)
 	{
@@ -75,11 +60,11 @@ class Alternative extends CI_Controller
 				'current_job_position' => $this->input->post('current_job_position'),
 			);
 
-			$this->form_validation->set_rules('name', 'Name', 'required');
-			$this->form_validation->set_rules('previous_company', 'Previous Company', 'required');
-			$this->form_validation->set_rules('phone_number', 'Phone Number', 'required');
+			$this->form_validation->set_rules('name', 'Nama', 'required');
+			$this->form_validation->set_rules('previous_company', 'Perusahaan Sebelumnya', 'required');
+			$this->form_validation->set_rules('phone_number', 'No HP', 'required');
 			$this->form_validation->set_rules('email', 'Email', 'required');
-			$this->form_validation->set_rules('current_job_position', 'Current Job Position', 'required');
+			$this->form_validation->set_rules('current_job_position', 'Jabatan Terakhir', 'required');
 
 			if ($this->form_validation->run()) {
 				if ($this->input->post('id') == '') {

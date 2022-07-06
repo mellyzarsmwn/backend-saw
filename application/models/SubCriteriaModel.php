@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class CriteriaModel extends CI_Model
+class SubCriteriaModel extends CI_Model
 {
 
 	public function __construct()
@@ -11,47 +11,37 @@ class CriteriaModel extends CI_Model
 		$this->load->database();
 	}
 
-	public function getActiveCriteria()
+	public function all($criteria_id = "")
 	{
-		$data = array();
-
-		$criterias = $this->db
-			->where('deleted_at is null')
-			->get('criteria')
-			->result();
-
-		foreach ($criterias as $value) {
-			$data[$value->id] = $value->name;
+		$where = "sc.deleted_at is null ";
+		if ($criteria_id != "") {
+			$where .= "AND sc.criteria_id = $criteria_id";
 		}
 
-		return $data;
-	}
-
-	public function all()
-	{
-		return $this->db->select('c.*')
-			->where('deleted_at is null')
-			->order_by('id desc')
-			->get('criteria c');
+		return $this->db->select('sc.*, c.name as criteria_name')
+			->join('criteria c', 'c.id = sc.criteria_id')
+			->where($where)
+			->order_by('sc.id desc')
+			->get('sub_criteria sc');
 	}
 
 	public function getWhere($where)
 	{
 		$this->db->where($where);
-		return $this->db->get('criteria');
+		return $this->db->get('sub_criteria');
 	}
 
 	public function insert($data)
 	{
 		// melakukan insert ke tabel users
-		return $this->db->insert('criteria', $data);
+		return $this->db->insert('sub_criteria', $data);
 	}
 
 	public function update($data, $where)
 	{
 		//melakukan update ke tabel users
 		$this->db->where($where);
-		return $this->db->update('criteria', $data);
+		return $this->db->update('sub_criteria', $data);
 	}
 
 	public function delete($where)
@@ -63,7 +53,7 @@ class CriteriaModel extends CI_Model
 		);
 
 		$this->db->where($where);
-		return $this->db->update('criteria', $data);
+		return $this->db->update('sub_criteria', $data);
 	}
 
 }

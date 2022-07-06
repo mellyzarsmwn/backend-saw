@@ -71,7 +71,7 @@ class Period extends CI_Controller
 				'name' => $this->input->post('name'),
 			);
 
-			$this->form_validation->set_rules('name', 'Name', 'required');
+			$this->form_validation->set_rules('name', 'Nama', 'required');
 
 			if ($this->form_validation->run()) {
 				if ($this->input->post('id') == '') {
