@@ -10,6 +10,21 @@ class PeriodModel extends CI_Model
 		$this->load->database();
 	}
 
+	public function getActivePeriod()
+	{
+		$data = array();
+
+		$periods = $this->db
+			->where('deleted_at is null')
+			->get('period')
+			->result();
+
+		foreach ($periods as $value) {
+			$data[$value->id] = $value->name;
+		}
+
+		return $data;
+	}
 
 	public function all()
 	{

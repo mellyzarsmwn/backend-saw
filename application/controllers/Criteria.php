@@ -44,7 +44,16 @@ class Criteria extends CI_Controller
 		if (!empty($data_save)) {
 			$data['criteria_save'] = $data_save;
 		}
-		$data['criterias'] = $this->CriteriaModel->all();
+
+		$criterias = $this->CriteriaModel->all();
+
+		$total_weight = 0;
+		foreach ($criterias->result_array() as $c) {
+			$total_weight += $c['weight'];
+		}
+
+		$data['criterias'] = $criterias;
+		$data['total_weight'] = $total_weight;
 		$this->template('criteria/list', $data);
 	}
 

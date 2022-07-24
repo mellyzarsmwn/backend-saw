@@ -32,6 +32,7 @@
 		<div class="row animated fadeInUp">
 			<div class="col-sm-12">
 				<div class="card-box table-responsive">
+					<b>Total Bobot : <?php echo $total_weight; ?> </b>
 					<table id="datatable" class="table table-striped table-bordered">
 						<thead>
 						<tr>

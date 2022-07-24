@@ -84,7 +84,7 @@
 						</ul>
 					</li>
 					<li class="has_sub">
-						<a href="<?php echo site_url('salaryreport') ?>" class="waves-effect"><i
+						<a href="<?php echo site_url('alternativevalue') ?>" class="waves-effect"><i
 									class="mdi mdi-counter"></i><span>Nilai Alternatif</span> </a>
 						<a href="<?php echo site_url('salaryreport') ?>" class="waves-effect"><i
 									class="mdi mdi-cash-multiple"></i><span>Perhitungan</span> </a>
