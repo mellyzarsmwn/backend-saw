@@ -21,13 +21,30 @@ class AlternativeValueModel extends CI_Model
 			$where .= "AND a.name like '%$alternative_name%'";
 		}
 		if ($period_id != "") {
-			$where .= "AND av.period_id = $alternative_name";
+			$where .= "AND av.period_id = $period_id";
 		}
 
-		return $this->db->select('av.*, a.name `alternative_name`, u.name `user_name`, p.name `period_name`')
+		return $this->db->select('av.*, a.name `alternative_name`, u.name `user_name`')
 			->join('alternative a', 'a.id = av.alternative_id')
 			->join('users u', 'u.id = av.user_id')
-			->join('period p', 'p.id = av.period_id')
+			->where($where)
+			->order_by('av.id desc')
+			->get('alternative_value av');
+	}
+
+	public function get_detail($id, $period_id)
+	{
+		$where = "av.deleted_at is null ";
+		if ($id && $id != "") {
+			$where .= "AND av.id = $id";
+		}
+		if ($period_id != "") {
+			$where .= " AND av.period_id = $period_id";
+		}
+
+		return $this->db->select('av.*, a.name `alternative_name`, u.name `user_name`')
+			->join('alternative a', 'a.id = av.alternative_id')
+			->join('users u', 'u.id = av.user_id')
 			->where($where)
 			->order_by('av.id desc')
 			->get('alternative_value av');

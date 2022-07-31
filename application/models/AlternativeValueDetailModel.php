@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class AlternativeModel extends CI_Model
+class AlternativeValueDetailModel extends CI_Model
 {
 
 	public function __construct()
@@ -10,45 +10,29 @@ class AlternativeModel extends CI_Model
 		$this->load->database();
 	}
 
-	public function getActiveAlternative()
-	{
-		$data = array();
-
-		$alternatives = $this->db
-			->where('deleted_at is null')
-			->get('alternative')
-			->result();
-
-		foreach ($alternatives as $value) {
-			$data[$value->id] = $value->name;
-		}
-
-		return $data;
-	}
-
 	public function all()
 	{
-		return $this->db->select('a.*')
+		return $this->db->select('avd.*')
 			->where('deleted_at is null')
 			->order_by('id desc')
-			->get('alternative a');
+			->get('alternative_value_detail avd');
 	}
 
 	public function getWhere($where)
 	{
 		$this->db->where($where);
-		return $this->db->get('alternative');
+		return $this->db->get('alternative_value_detail');
 	}
 
 	public function insert($data)
 	{
-		return $this->db->insert('alternative', $data);
+		return $this->db->insert('alternative_value_detail', $data);
 	}
 
 	public function update($data, $where)
 	{
 		$this->db->where($where);
-		return $this->db->update('alternative', $data);
+		return $this->db->update('alternative_value_detail', $data);
 	}
 
 	public function delete($where)
@@ -59,6 +43,6 @@ class AlternativeModel extends CI_Model
 		);
 
 		$this->db->where($where);
-		return $this->db->update('alternative', $data);
+		return $this->db->update('alternative_value_detail', $data);
 	}
 }

@@ -96,7 +96,9 @@
 									<button id="exampleModal" type="button"
 											class="exampleModal btn btn-icon btn-xs waves-effect waves-light btn-primary m-b-5"
 											data-toggle="modal"
-											data-id="<?= $av['id'] ?>" data-target="#exampleModalLong">
+											data-id="<?= $av['id'] ?>"
+											data-period-id="<?= $av['period_id'] ?>"
+											data-target="#exampleModalLong">
 										<i class="mdi mdi-magnify"></i>
 									</button>
 									<a href="<?php echo site_url('alternativevalue/get_detail_salary/' . $av['id']); ?>"
@@ -129,73 +131,30 @@
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<!--				<a href="-->
-				<?php //echo site_url('salaryreport/get_detail_salary/' . $sr['id']); ?><!--"-->
-				<!--				   target="_blank" class="btn btn-icon btn-xs waves-effect waves-light btn-success m-b-5"><i-->
-				<!--							class="mdi mdi-printer"></i> Cetak</a>-->
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h4 class="modal-title text-teal" id="myLargeModalLabel">Detail Transaksi</h4>
+				<h4 class="modal-title text-teal" id="myLargeModalLabel">Detail Nilai Alternatif</h4>
 			</div>
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="field-3" class="control-label">Nama Karyawan</label>
-							<input type="text" readonly="" class="form-control" id="employee_name" placeholder="">
+							<label for="field-3" class="control-label">Nama Alternatif</label>
+							<input type="text" readonly="" class="form-control" id="alternative_name" placeholder="">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="field-3" class="control-label">Status Karyawan</label>
-							<input type="text" readonly="" class="form-control" id="employee_status" placeholder="">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="field-3" class="control-label">Gaji Kotor</label>
-							<input type="text" readonly="" class="form-control" id="gross_salary"
-								   placeholder="">
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="field-3" class="control-label">Gaji Diterima</label>
-							<input type="text" readonly="" class="form-control" id="net_salary"
-								   placeholder="">
+							<label for="field-3" class="control-label">Periode</label>
+							<input type="text" readonly="" class="form-control" id="period_name" placeholder="">
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="field-3" class="control-label">Total Tambahan Gaji</label>
-							<input type="text" readonly="" class="form-control" id="salary_type_increase_total"
-								   placeholder="">
+							<h4 class="modal-title text-teal" id="myLargeModalLabel">Data Kriteria</h4>
 						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="field-3" class="control-label">Total Potongan Gaji</label>
-							<input type="text" readonly="" class="form-control" id="salary_type_decrease_total"
-								   placeholder="">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<h4 class="modal-title text-teal" id="myLargeModalLabel">Tambahan</h4>
-						</div>
-						<div class="row" id="salary_increase">
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<h4 class="modal-title text-teal" id="myLargeModalLabel">Potongan</h4>
-						</div>
-						<div class="row" id="salary_decrease">
+						<div class="row" id="criteria_detail">
 						</div>
 					</div>
 				</div>
@@ -215,7 +174,7 @@
 			document.getElementById('end_date_input').value = ''
 			document.getElementById('alternative_name_input').value = ''
 			document.getElementById("formFilter").submit();
-			window.location.href = 'salaryreport'
+			window.location.href = 'alternativevalue'
 		});
 
 		$('#filter').click(function () {
@@ -228,19 +187,16 @@
 
 		$('.exampleModal').click(function () {
 			var id = $(this).attr("data-id");
+			var period_id = $(this).attr("data-period-id");
 			$.ajax({
 				type: 'get',
 				url: '<?= site_url('alternativevalue/get_detail_json'); ?>',
-				data: {id: id},
+				data: {id: id, period_id: period_id},
 				dataType: 'json',
 				success: function (data) {
 					console.log(data);
-					$("#employee_name").val(data.employee_name)
-					$("#employee_status").val(data.employee_status == 1 ? 'Aktif' : 'Tidak Aktif')
-					$("#gross_salary").val('Rp. ' + data.gross_salary + ',-')
-					$("#net_salary").val('Rp. ' + data.net_salary + ',-')
-					$("#salary_type_increase_total").val('Rp. ' + data.salary_type_increase_total + ',-')
-					$("#salary_type_decrease_total").val('Rp. ' + data.salary_type_decrease_total + ',-')
+					$("#alternative_name").val(data.alternative_value.alternative_name)
+					$("#period_name").val(data.alternative_value.period_name)
 
 					// looping salary increase detail
 					$('#salary_increase').empty()
